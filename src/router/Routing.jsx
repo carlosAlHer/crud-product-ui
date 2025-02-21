@@ -30,7 +30,8 @@ export const Routing = () => {
                         <Route path="/form-prd" element={<ProductForm />} />
                         <Route path="/list-categ" element={<CategoryList />} />
                         <Route path="/form-categ" element={<CategoryForm />} />
-                        <Route path="/detail-prd" element={<ProductDetail />} />
+                        <Route path="/detail-prd/:id" element={<ProductDetail />} />
+                        <Route path="/edit-prd/:id" element={<ProductForm />} />
                         <Route path="*" element={<Error />} />
                     </Routes>
                 </Col>

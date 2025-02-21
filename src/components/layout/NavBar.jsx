@@ -12,8 +12,8 @@ export const NavBar = () => {
                 <Nav className="me-auto w-100 d-flex">
                     <Link to="/list-prd" className="nav-link">List Products</Link>
                     <Link to="/list-categ" className="nav-link">List Categories</Link>
-                    <Link to="/form-categ" className="nav-link">Register Cagegories</Link>
                     <Link to="/form-prd" className="nav-link">Register Products</Link>
+                    <Link to="/form-categ" className="nav-link">Register Cagegories</Link>     
                 </Nav>
             
         </Navbar>
