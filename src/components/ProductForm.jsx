@@ -14,12 +14,11 @@ export const ProductForm = () => {
   const [categories, setcategories] = useState([]);
 
 
-
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
   const [description, setDescription] = useState('');
   const [categorie, setCategorie] = useState('Choose...');
-  const [product, setProduct] = useState({});
+  const [product, setProduct] = useState([]);
 
 
 
@@ -34,7 +33,7 @@ export const ProductForm = () => {
       });
 
       const data = await request.json();
-      setProduct(data.document || {});
+      setProduct(data || []);
       setFormValues(product)
 
     } catch (error) {
@@ -44,15 +43,15 @@ export const ProductForm = () => {
   }
 
   const setFormValues = (productData) => {
-    setName(productData.name);
-    setPrice(productData.price);
-    setDescription(productData.description);
-    setCategorie(productData.categorie);
+    setName(productData.name || "");
+    setPrice(productData.price || "");
+    setDescription(productData.description || "");
+    setCategorie(productData.categorie || "");
 
   }
 
   useEffect(() => {
-    if (param) {
+    if (param.id) {
       getProduct()
     }
 
@@ -78,7 +77,7 @@ export const ProductForm = () => {
     });
 
     const data = await request.json();
-    setcategories(data.documents || []);
+    setcategories(data || []);
   }
 
   useEffect(() => {
@@ -86,7 +85,7 @@ export const ProductForm = () => {
 
   }, []);
 
-
+//funcion para crear nuevo producto y para acturalizar en el mismo form, se crea productData y requestConfig dinamico
   const saveProduct = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -108,9 +107,8 @@ export const ProductForm = () => {
       body: JSON.stringify(productData), // Body para POST
     };
 
-    const upd = product && param && param.id;
 
-    if (upd) {
+    if (product && param && param.id) {
       requestConfig.method = 'PUT';
       productData.id = Number(param.id) ;
       requestConfig.body = JSON.stringify(productData); 

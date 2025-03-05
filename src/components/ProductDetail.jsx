@@ -23,7 +23,7 @@ export const ProductDetail = () => {
       });
 
       const data = await request.json();
-      setProduct(data.document || {});
+      setProduct(data || {});
 
     } catch (error) {
       console.error('Error:', error);
@@ -48,7 +48,7 @@ export const ProductDetail = () => {
     });
 
     const data = await request.json();
-    const cat = data.documents.filter((cat) => cat.id === product.category_id) || {};
+    const cat = data.filter((cat) => cat.id === product.category_id) || {};
     setcategories(cat[0] || {});
 
   }

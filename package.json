@@ -20,7 +20,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "purgecss" : "purgecss --css  ./src/sass/custom.css --content ./src/index.jsx -o ./src/sass/reducido.css"
   },
   "eslintConfig": {
     "extends": [

@@ -18,7 +18,7 @@ export const ProductList = () => {
       });
 
       const data = await request.json();
-      setProducts(data.documents || []);
+      setProducts(data || []);
 
 
     } catch (error) {
@@ -32,37 +32,40 @@ export const ProductList = () => {
 
   }, []);
 
-  
+
   const handleDetail = (id) => {
     navigate(`/detail-prd/${id}`);
-};
+  };
 
-const deleteProduct = async (id)=>{
-  try {
-    const request = await fetch(`http://localhost:3000/api/prd/${id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json"
+  const deleteProduct = async (id) => {
+    try {
+      const request = await fetch(`http://localhost:3000/api/prd/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      });
+
+      const data = await request.json();
+      console.log(data)
+      
+      if(!data.error){
+        setProducts((prevProducts) => prevProducts.filter((product) => product.id != id));
       }
-    });
-    
-    const data = await request.json();
-    
-    console.log(data.json())
 
-  } catch (error) {
-    console.error('Error:', error);
+    } catch (error) {
+      console.error('Error:', error);
+    }
   }
-}
 
 
-const updateProduct =(id)=>{
+  const updateProduct = (id) => {
 
-navigate(`/edit-prd/${id}`)
+    navigate(`/edit-prd/${id}`)
 
-}
+  }
   return (
-    <Table striped bordered hover variant="" size="sm">
+    <Table striped bordered hover variant="" size="sm" >
       <thead>
         <tr>
           <th>#</th>
@@ -78,12 +81,15 @@ navigate(`/edit-prd/${id}`)
           products.map((product, index) => {
             return (
               <tr key={product.id}>
-                <td>{index + 1}</td>
-                <td>{product.name}</td>
-                <td>{product.description}</td>
-                <td>{product.price}</td>
+                
+                  <td>{index + 1}</td>
+                  <td>{product.name}</td>
+                  <td>{product.description}</td>
+                  <td>{product.price}</td>
+                
                 <td>
-                  <div className="d-flex justify-content-center align-items-center">
+
+                  <div  className="d-flex  justify-content-center align-items-center">
                     <Button className="mx-2" variant="success" onClick={e => handleDetail(product.id)}>Detail</Button>
                     <Button className="mx-2" variant="danger" onClick={e => deleteProduct(product.id)}>Delete</Button>
                     <Button className="mx-2" variant="warning" onClick={e => updateProduct(product.id)}>Update</Button>
