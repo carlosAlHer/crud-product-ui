@@ -17,7 +17,7 @@ export const ProductForm = () => {
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
   const [description, setDescription] = useState('');
-  const [categorie, setCategorie] = useState('Choose...');
+  const [categ, setCateg] = useState('Choose...');
   const [product, setProduct] = useState([]);
 
 
@@ -46,7 +46,7 @@ export const ProductForm = () => {
     setName(productData.name || "");
     setPrice(productData.price || "");
     setDescription(productData.description || "");
-    setCategorie(productData.categorie || "");
+    setCateg(productData.categorie || "");
 
   }
 
@@ -177,10 +177,10 @@ export const ProductForm = () => {
           <Form.Label>Cagegorie</Form.Label>
           <Form.Select
             name='categorie'
-            defaultValue="Choose..."
+            defaultValue={categ}
             required>
 
-            <option value="" >Choose Categorie</option>
+            <option value="" disabled >Choose Categorie</option>
             {
               categories.map((categorie) => {
                 return (

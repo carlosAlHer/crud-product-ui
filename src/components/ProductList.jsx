@@ -50,7 +50,7 @@ export const ProductList = () => {
       console.log(data)
       
       if(!data.error){
-        setProducts((prevProducts) => prevProducts.filter((product) => product.id != id));
+        setProducts((prevProducts) => prevProducts.filter((product) => product.id !== id));
       }
 
     } catch (error) {

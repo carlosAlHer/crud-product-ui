@@ -39,9 +39,9 @@ export const CategoryList = () => {
 
        if(!data.error){
         
-        setcategories((prevCategory) => prevCategory.filter((category) =>category.id != id)); 
+        setcategories((prevCategory) => prevCategory.filter((category) =>category.id !== id)); 
       }
-      if(data.error && data.status == "error") alert("No se puede eliminar categoría. esta asociada a un producto");
+      if(data.error && data.status === "error") alert("No se puede eliminar categoría. esta asociada a un producto");
 
     } catch (error) {
       console.error('Error:', error);

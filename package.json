@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^13.5.0",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
+    "framer-motion": "^12.4.10",
     "react": "^19.0.0",
     "react-bootstrap": "^2.10.9",
     "react-dom": "^19.0.0",
@@ -21,7 +22,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "purgecss" : "purgecss --css  ./src/sass/custom.css --content ./src/index.jsx -o ./src/sass/reducido.css"
+    "purgecss": "purgecss --css  ./src/sass/custom.css --content ./src/index.jsx -o ./src/sass/reducido.css"
   },
   "eslintConfig": {
     "extends": [
